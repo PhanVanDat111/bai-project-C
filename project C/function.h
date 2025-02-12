@@ -1,8 +1,7 @@
-// ham hien thi he thong va quan li thu vien
 void showMenu();
-void addBooks();
-	
-	
+void addBooks(struct Book *book1, int *book_count);
+void displayBook(struct Book *book1, int book_count);
+void editBook(struct Book *book1, int book_count);	
 	
 	
 	
