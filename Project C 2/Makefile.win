@@ -1,0 +1,41 @@
+# Project: Project1
+# Makefile created by Dev-C++ 6.7.5
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o book_manager.o data.o menu.o user_maneger.o
+LINKOBJ  = main.o book_manager.o data.o menu.o user_maneger.o
+LIBS     = -L"D:/ti ng dng/Dev-Cpp/MinGW64/lib" -L"D:/ti ng dng/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -g3 -static
+INCS     = -I"D:/ti ng dng/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/10.3.0/include" -I"D:/ti ng dng/Dev-Cpp/MinGW64/include" -I"D:/ti ng dng/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed" -I"D:/ti ng dng/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+CXXINCS  = -I"D:/ti ng dng/Dev-Cpp/MinGW64/include/c++/10.3.0" -I"D:/ti ng dng/Dev-Cpp/MinGW64/include/c++/10.3.0/x86_64-w64-mingw32" -I"D:/ti ng dng/Dev-Cpp/MinGW64/include/c++/10.3.0/backward" -I"D:/ti ng dng/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/10.3.0/include" -I"D:/ti ng dng/Dev-Cpp/MinGW64/include" -I"D:/ti ng dng/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed" -I"D:/ti ng dng/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+BIN      = Project1.exe
+CXXFLAGS = $(CXXINCS) -Wall -Wextra -g3
+ENCODINGS = -finput-charset=utf-8 -fexec-charset=windows-1252
+CFLAGS   = $(INCS) -Wall -Wextra -g3
+RM       = del /q /f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "$(BIN)" $(LIBS)
+
+main.o: main.c book_maneger.h data.h menu.h user_manager.h
+	$(CC) -c main.c -o main.o $(CFLAGS) 
+
+book_manager.o: book_manager.c book_maneger.h
+	$(CC) -c book_manager.c -o book_manager.o $(CFLAGS) 
+
+data.o: data.c book_maneger.h data.h
+	$(CC) -c data.c -o data.o $(CFLAGS) 
+
+menu.o: menu.c book_maneger.h menu.h
+	$(CC) -c menu.c -o menu.o $(CFLAGS) 
+
+user_maneger.o: user_maneger.c user_manager.h
+	$(CC) -c user_maneger.c -o user_maneger.o $(CFLAGS) 
